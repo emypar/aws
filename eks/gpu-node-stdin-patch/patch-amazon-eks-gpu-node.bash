@@ -78,7 +78,7 @@ if [[ ! -f $installroot/etc/yum.repos.d/CentOS-Base.repo ]]; then
         set -x
         sudo yum install -y \
              --installroot=$installroot \
-             http://mirror.centos.org/centos/7/os/x86_64/Packages/centos-release-7-7.1908.0.el7.centos.x86_64.rpm
+             http://mirror.centos.org/centos/7/os/x86_64/Packages/centos-release-7-8.2003.0.el7.centos.x86_64.rpm
     )
 fi
 (
@@ -139,9 +139,8 @@ fi
 yum repolist
 
 # Verify that future updates will not break anything:
-(set -x; sudo yum update -y --skip-broken)
+# (set -x; sudo yum update -y --skip-broken)
 
 # Test that it works after restart:
 (set -x; sudo systemctl restart docker)
 check_gpu && check_stdin_stream
-
